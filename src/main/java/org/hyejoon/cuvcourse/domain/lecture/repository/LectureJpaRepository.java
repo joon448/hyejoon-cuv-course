@@ -40,8 +40,8 @@ public interface LectureJpaRepository extends JpaRepository<Lecture, Long> {
         value = """
               SELECT * FROM lectures
               WHERE MATCH(lecture_title) AGAINST (:keyword IN NATURAL LANGUAGE MODE)
-              ORDER BY id DESC
-            """,//MATCH(lecture_title) AGAINST (:keyword IN NATURAL LANGUAGE MODE) DESC,
+              ORDER BY MATCH(lecture_title) AGAINST (:keyword IN NATURAL LANGUAGE MODE) DESC, id DESC
+            """,
         countQuery = """
               SELECT COUNT(*) FROM lectures
               WHERE MATCH(lecture_title) AGAINST (:keyword IN NATURAL LANGUAGE MODE)
