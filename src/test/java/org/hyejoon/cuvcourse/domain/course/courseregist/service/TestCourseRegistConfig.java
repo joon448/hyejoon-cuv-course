@@ -1,5 +1,6 @@
 package org.hyejoon.cuvcourse.domain.course.courseregist.service;
 
+import org.hyejoon.cuvcourse.domain.course.courseregist.seat.SeatGate;
 import org.hyejoon.cuvcourse.domain.course.repository.CourseJpaRepository;
 import org.hyejoon.cuvcourse.domain.lecture.repository.LectureJpaRepository;
 import org.hyejoon.cuvcourse.domain.student.repository.StudentJpaRepository;
@@ -63,4 +64,20 @@ public class TestCourseRegistConfig {
         return new CourseRegistService(courseCreationService, lockManager, noLock,
             courseJpaRepository, lectureJpaRepository, studentJpaRepository);
     }
+
+    @Bean
+    @Qualifier("courseRegistServiceWithSemaphore")
+    public CourseRegistServiceWithSemaphore redissonCourseRegistServiceWithSemaphore(
+        SeatGate seatGate,
+        CourseCreationService courseCreationService,
+        LockManager lockManager,
+        @Qualifier("redissonLock") DistributedLock redissonLock,
+        CourseJpaRepository courseJpaRepository,
+        LectureJpaRepository lectureJpaRepository,
+        StudentJpaRepository studentJpaRepository) {
+        return new CourseRegistServiceWithSemaphore(seatGate, courseCreationService,
+            lockManager, redissonLock, courseJpaRepository, lectureJpaRepository,
+            studentJpaRepository);
+    }
+
 }
