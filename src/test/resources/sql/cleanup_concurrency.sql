@@ -1,0 +1,10 @@
+DELETE
+FROM courses
+WHERE lecture_id = 1001
+   OR student_id BETWEEN 2001 AND 2030;
+DELETE
+FROM students
+WHERE id BETWEEN 2001 AND 2030;
+DELETE
+FROM lectures
+WHERE id = 1001;
