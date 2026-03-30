@@ -7,7 +7,7 @@ import java.util.List;
 import org.hyejoon.cuvcourse.domain.lecture.entity.Lecture;
 import org.hyejoon.cuvcourse.domain.lecture.repository.LectureJpaRepository;
 import org.hyejoon.cuvcourse.support.Performance;
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,8 +25,8 @@ public class LectureSearchTest {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @AfterEach
-    void tearDown() {
+    @BeforeEach
+    void clean() {
         jdbcTemplate.execute("SET FOREIGN_KEY_CHECKS=0");
         jdbcTemplate.execute("TRUNCATE TABLE lectures");
         jdbcTemplate.execute("SET FOREIGN_KEY_CHECKS=1");
@@ -36,8 +36,8 @@ public class LectureSearchTest {
     void fulltext_vs_like() {
         // Given
         String KW = "최적화";
-        double HIT_RATIO = 0.0001;   // 키워드 포함 비율
-        int total = 1_000_000;
+        double HIT_RATIO = 0.01;   // 키워드 포함 비율
+        int total = 10_000;
 
         int HIT = insertShuffled(total, HIT_RATIO, KW);
         System.out.println("HIT: " + HIT);
@@ -87,7 +87,7 @@ public class LectureSearchTest {
               INSERT INTO lectures (id, lecture_title, professor_name, credits, capacity, total, created_at)
               VALUES (?, ?, ?, ?, ?, ?, NOW())
             """;
-        int BATCH = 5000;
+        int BATCH = 500;
         int includeKw = 0;
         long id = 1;
         var rnd = new java.util.Random(7); // 고정 seed

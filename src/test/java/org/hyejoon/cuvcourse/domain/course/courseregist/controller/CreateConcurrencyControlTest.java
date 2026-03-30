@@ -1,4 +1,4 @@
-package org.hyejoon.cuvcourse.domain.course.create.controller;
+package org.hyejoon.cuvcourse.domain.course.courseregist.controller;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,10 +10,8 @@ import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
-import org.hyejoon.cuvcourse.domain.course.create.service.CourseCreateService;
-import org.hyejoon.cuvcourse.domain.course.create.service.CourseCreateServiceWithOptimistic;
-import org.hyejoon.cuvcourse.domain.course.create.service.CourseCreateServiceWithPessimistic;
-import org.hyejoon.cuvcourse.domain.course.create.service.CourseCreateServiceWithRedis;
+
+import org.hyejoon.cuvcourse.domain.course.courseregist.service.*;
 import org.hyejoon.cuvcourse.domain.lecture.entity.Lecture;
 import org.hyejoon.cuvcourse.domain.lecture.repository.LectureJpaRepository;
 import org.junit.jupiter.api.DisplayName;

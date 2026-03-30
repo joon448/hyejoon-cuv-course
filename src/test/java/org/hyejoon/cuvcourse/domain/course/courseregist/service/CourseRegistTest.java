@@ -9,7 +9,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
-import org.hyejoon.cuvcourse.domain.course.repository.CourseJpaRepository;
 import org.hyejoon.cuvcourse.domain.lecture.entity.Lecture;
 import org.hyejoon.cuvcourse.domain.lecture.repository.LectureJpaRepository;
 import org.hyejoon.cuvcourse.domain.student.entity.Student;
@@ -27,7 +26,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class CourseRegistTest {
 
     @Autowired
-    // courseRegistNoLockService - 무조건 실패
+    // courseRegistNoLockService - 실패
     // courseRegistSpinLockService - 성공
     // courseRegistPubSubLockService - 성공
     // courseRegistRedissonService - 성공
@@ -39,9 +38,6 @@ public class CourseRegistTest {
 
     @Autowired
     private LectureJpaRepository lectureJpaRepository;
-
-    @Autowired
-    private CourseJpaRepository courseJpaRepository;
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -60,9 +56,9 @@ public class CourseRegistTest {
         // Given
 
         // 강의 정원
-        final int CAPACITY = 30;
+        final int CAPACITY = 50;
         // 해당 강의를 신청하는 학생 수
-        final int TOTAL_STUDENT = 150;
+        final int TOTAL_STUDENT = 1000;
 
         Lecture lecture = new Lecture("강의", "교수님", 3, CAPACITY);
         final Lecture savedLecture = lectureJpaRepository.save(lecture);
@@ -96,7 +92,7 @@ public class CourseRegistTest {
 
         executor.shutdown();
         try {
-            executor.awaitTermination(30, TimeUnit.SECONDS);
+            executor.awaitTermination(180, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }

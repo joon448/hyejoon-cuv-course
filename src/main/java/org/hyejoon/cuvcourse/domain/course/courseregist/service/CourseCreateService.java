@@ -1,9 +1,7 @@
-package org.hyejoon.cuvcourse.domain.course.create.service;
-
-import static org.hyejoon.cuvcourse.domain.course.exception.CourseExceptionEnum.ALREADY_REGISTERED;
+package org.hyejoon.cuvcourse.domain.course.courseregist.service;
 
 import lombok.RequiredArgsConstructor;
-import org.hyejoon.cuvcourse.domain.course.create.dto.CourseResponse;
+import org.hyejoon.cuvcourse.domain.course.courseregist.dto.CourseResponse;
 import org.hyejoon.cuvcourse.domain.course.entity.Course;
 import org.hyejoon.cuvcourse.domain.course.entity.CourseId;
 import org.hyejoon.cuvcourse.domain.course.exception.CourseExceptionEnum;
@@ -15,6 +13,8 @@ import org.hyejoon.cuvcourse.domain.student.repository.StudentJpaRepository;
 import org.hyejoon.cuvcourse.global.exception.BusinessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import static org.hyejoon.cuvcourse.domain.course.exception.CourseExceptionEnum.ALREADY_REGISTERED;
 
 @Service
 @RequiredArgsConstructor

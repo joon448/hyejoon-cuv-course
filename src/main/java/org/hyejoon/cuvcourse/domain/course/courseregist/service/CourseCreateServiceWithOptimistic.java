@@ -1,10 +1,10 @@
-package org.hyejoon.cuvcourse.domain.course.create.service;
+package org.hyejoon.cuvcourse.domain.course.courseregist.service;
 
 import static org.hyejoon.cuvcourse.domain.course.exception.CourseExceptionEnum.REQUEST_FAILED;
 
 import jakarta.persistence.OptimisticLockException;
 import lombok.RequiredArgsConstructor;
-import org.hyejoon.cuvcourse.domain.course.create.dto.CourseResponse;
+import org.hyejoon.cuvcourse.domain.course.courseregist.dto.CourseResponse;
 import org.hyejoon.cuvcourse.global.exception.BusinessException;
 import org.springframework.dao.CannotAcquireLockException;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;

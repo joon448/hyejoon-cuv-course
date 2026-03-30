@@ -1,11 +1,11 @@
-package org.hyejoon.cuvcourse.domain.course.create.service;
+package org.hyejoon.cuvcourse.domain.course.courseregist.service;
 
 import static org.hyejoon.cuvcourse.domain.course.exception.CourseExceptionEnum.ALREADY_REGISTERED;
 import static org.hyejoon.cuvcourse.domain.course.exception.CourseExceptionEnum.LECTURE_NOT_FOUND;
 import static org.hyejoon.cuvcourse.domain.course.exception.CourseExceptionEnum.STUDENT_NOT_FOUND;
 
 import lombok.RequiredArgsConstructor;
-import org.hyejoon.cuvcourse.domain.course.create.dto.CourseResponse;
+import org.hyejoon.cuvcourse.domain.course.courseregist.dto.CourseResponse;
 import org.hyejoon.cuvcourse.domain.course.entity.Course;
 import org.hyejoon.cuvcourse.domain.course.entity.CourseId;
 import org.hyejoon.cuvcourse.domain.course.exception.CourseExceptionEnum;
